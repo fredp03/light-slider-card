@@ -5,7 +5,7 @@ const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
 console.info(
-  `%c LIGHT-SLIDER-CARD %c v1.0.4 `,
+  `%c LIGHT-SLIDER-CARD %c v1.0.5 `,
   "color: white; background: #555; font-weight: bold;",
   "color: white; background: #918F8F; font-weight: bold;"
 );
@@ -63,6 +63,7 @@ class LightSliderCard extends LitElement {
 
     .lamp-status.overlay-mode {
       mix-blend-mode: screen;
+      transition: none;
     }
 
     .lamp-status.expanded {
