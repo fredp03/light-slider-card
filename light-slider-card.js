@@ -5,7 +5,7 @@ const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
 console.info(
-  `%c LIGHT-SLIDER-CARD %c v1.0.0 `,
+  `%c LIGHT-SLIDER-CARD %c v1.0.1 `,
   "color: white; background: #555; font-weight: bold;",
   "color: white; background: #918F8F; font-weight: bold;"
 );
@@ -24,13 +24,13 @@ class LightSliderCard extends LitElement {
 
     :host {
       font-family: 'Karla', sans-serif;
-      --card-bg: #918F8F;
-      --card-bg-selected: #716F6F;
-      --text-color: #2B2B2B;
-      --border-color: #BDBDBD;
-      --slider-bg: #5A5A5A;
-      --slider-fill: #FFF3EC;
-      --slider-border: #A9A9A9;
+      --card-bg: var(--ha-card-background, #4a4a4a);
+      --card-bg-selected: var(--secondary-background-color, #5a5a5a);
+      --text-color: var(--primary-text-color, #e0e0e0);
+      --border-color: var(--divider-color, #555);
+      --slider-bg: var(--secondary-background-color, #5A5A5A);
+      --slider-fill: var(--accent-color, #FFF3EC);
+      --slider-border: var(--divider-color, #A9A9A9);
     }
 
     .menu-system {
@@ -45,8 +45,7 @@ class LightSliderCard extends LitElement {
       min-width: 200px;
       padding: 10px;
       background: var(--card-bg);
-      mix-blend-mode: overlay;
-      box-shadow: 1px -1px 2px 0px rgba(63, 62, 62, 0.2), -1px -1px 2px 0px rgba(163, 160, 160, 0.9), 1px 1px 2px 0px rgba(63, 62, 62, 0.61);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       overflow: hidden;
       border-radius: 16px;
       outline: 0.5px var(--border-color) solid;
@@ -65,8 +64,7 @@ class LightSliderCard extends LitElement {
       min-width: unset;
       height: 76px;
       background: var(--card-bg-selected);
-      mix-blend-mode: normal;
-      box-shadow: 2px 2px 5px rgba(59, 58, 58, 0.90), -2px -2px 4px rgba(167, 164, 164, 0.9), 2px -2px 4px rgba(59, 58, 58, 0.2), -2px 2px 4px rgba(59, 58, 58, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
       justify-content: center;
     }
 
@@ -175,8 +173,7 @@ class LightSliderCard extends LitElement {
     .child-item {
       padding: 10px;
       background: var(--card-bg-selected);
-      mix-blend-mode: overlay;
-      box-shadow: 1px 1px 2px rgba(63, 62, 62, 0.61);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       overflow: hidden;
       border-radius: 16px;
       outline: 0.5px var(--border-color) solid;
