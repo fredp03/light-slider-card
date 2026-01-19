@@ -5,7 +5,7 @@ const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
 console.info(
-  `%c LIGHT-SLIDER-CARD %c v1.0.1 `,
+  `%c LIGHT-SLIDER-CARD %c v1.0.2 `,
   "color: white; background: #555; font-weight: bold;",
   "color: white; background: #918F8F; font-weight: bold;"
 );
@@ -24,13 +24,14 @@ class LightSliderCard extends LitElement {
 
     :host {
       font-family: 'Karla', sans-serif;
-      --card-bg: var(--ha-card-background, #4a4a4a);
-      --card-bg-selected: var(--secondary-background-color, #5a5a5a);
-      --text-color: var(--primary-text-color, #e0e0e0);
-      --border-color: var(--divider-color, #555);
-      --slider-bg: var(--secondary-background-color, #5A5A5A);
-      --slider-fill: var(--accent-color, #FFF3EC);
-      --slider-border: var(--divider-color, #A9A9A9);
+      --card-bg: var(--ha-card-background, #918F8F);
+      --card-bg-selected: var(--ha-card-background, #716F6F);
+      --text-color: #2B2B2B;
+      --border-color: #BDBDBD;
+      --slider-bg: #5A5A5A;
+      --slider-fill: #FFF3EC;
+      --slider-border: #A9A9A9;
+      --icon-color: #2B2B2B;
     }
 
     .menu-system {
