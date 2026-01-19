@@ -5,7 +5,7 @@ const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
 console.info(
-  `%c LIGHT-SLIDER-CARD %c v1.0.3 `,
+  `%c LIGHT-SLIDER-CARD %c v1.0.4 `,
   "color: white; background: #555; font-weight: bold;",
   "color: white; background: #918F8F; font-weight: bold;"
 );
@@ -59,6 +59,10 @@ class LightSliderCard extends LitElement {
       gap: 12.5px;
       position: relative;
       transition: all 0.3s ease;
+    }
+
+    .lamp-status.overlay-mode {
+      mix-blend-mode: screen;
     }
 
     .lamp-status.expanded {
@@ -199,6 +203,10 @@ class LightSliderCard extends LitElement {
       position: relative;
     }
 
+    .child-item.overlay-mode {
+      mix-blend-mode: screen;
+    }
+
     .child-item .card-inset-shadow {
       box-shadow: inset 1px 1px 2px 0px rgba(163, 160, 160, 0.3);
     }
@@ -235,6 +243,7 @@ class LightSliderCard extends LitElement {
       name: 'Light',
       icon: 'desk',
       children: [],
+      use_overlay: false,
       ...config
     };
   }
@@ -391,9 +400,11 @@ class LightSliderCard extends LitElement {
 
     const children = this.config.children || [];
 
+    const overlayClass = this.config.use_overlay ? 'overlay-mode' : '';
+
     return html`
       <div class="menu-system" @click=${this._handleMenuClick}>
-        <div class="lamp-status ${this._isExpanded ? 'expanded' : ''}">
+        <div class="lamp-status ${this._isExpanded ? 'expanded' : ''} ${overlayClass}">
           <div class="title">
             <div class="icon">
               ${this._renderIcon(this.config.icon)}
@@ -412,7 +423,7 @@ class LightSliderCard extends LitElement {
             if (!childEntity) return '';
 
             return html`
-              <div class="child-item">
+              <div class="child-item ${overlayClass}">
                 <div class="title">
                   <div class="icon">
                     ${this._renderIcon(child.icon || 'console-lamp')}
