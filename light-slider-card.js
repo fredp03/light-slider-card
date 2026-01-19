@@ -5,7 +5,7 @@ const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
 console.info(
-  `%c LIGHT-SLIDER-CARD %c v1.0.2 `,
+  `%c LIGHT-SLIDER-CARD %c v1.0.3 `,
   "color: white; background: #555; font-weight: bold;",
   "color: white; background: #918F8F; font-weight: bold;"
 );
@@ -24,8 +24,7 @@ class LightSliderCard extends LitElement {
 
     :host {
       font-family: 'Karla', sans-serif;
-      --card-bg: var(--ha-card-background, #918F8F);
-      --card-bg-selected: var(--ha-card-background, #716F6F);
+      --card-bg: #716F6F;
       --text-color: #2B2B2B;
       --border-color: #BDBDBD;
       --slider-bg: #5A5A5A;
@@ -46,7 +45,9 @@ class LightSliderCard extends LitElement {
       min-width: 200px;
       padding: 10px;
       background: var(--card-bg);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      box-shadow: 1px -1px 2px 0px rgba(63, 62, 62, 0.2), 
+                  -1px -1px 2px 0px rgba(163, 160, 160, 0.9), 
+                  1px 1px 2px 0px rgba(63, 62, 62, 0.61);
       overflow: hidden;
       border-radius: 16px;
       outline: 0.5px var(--border-color) solid;
@@ -64,8 +65,12 @@ class LightSliderCard extends LitElement {
       width: 239px;
       min-width: unset;
       height: 76px;
-      background: var(--card-bg-selected);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      background: var(--card-bg);
+      outline: 1px var(--border-color) solid;
+      box-shadow: 2px 2px 5px 0px rgba(59, 58, 58, 0.9), 
+                  -2px -2px 4px 0px rgba(167, 164, 164, 0.9), 
+                  2px -2px 4px 0px rgba(59, 58, 58, 0.2), 
+                  -2px 2px 4px 0px rgba(59, 58, 58, 0.2);
       justify-content: center;
     }
 
@@ -75,6 +80,11 @@ class LightSliderCard extends LitElement {
       pointer-events: none;
       border-radius: inherit;
       box-shadow: inset 1px 1px 2px 0px rgba(163, 160, 160, 0.3);
+    }
+
+    .lamp-status.expanded .card-inset-shadow {
+      box-shadow: inset 1px 1px 2px 0px rgba(167, 164, 164, 0.3),
+                  inset -1px -1px 2px 0px rgba(59, 58, 58, 0.5);
     }
 
     .title {
@@ -173,8 +183,10 @@ class LightSliderCard extends LitElement {
 
     .child-item {
       padding: 10px;
-      background: var(--card-bg-selected);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      background: var(--card-bg);
+      box-shadow: 1px -1px 2px 0px rgba(63, 62, 62, 0.2), 
+                  -1px -1px 2px 0px rgba(163, 160, 160, 0.9), 
+                  1px 1px 2px 0px rgba(63, 62, 62, 0.61);
       overflow: hidden;
       border-radius: 16px;
       outline: 0.5px var(--border-color) solid;
@@ -184,6 +196,11 @@ class LightSliderCard extends LitElement {
       justify-content: flex-start;
       align-items: flex-start;
       gap: 12.5px;
+      position: relative;
+    }
+
+    .child-item .card-inset-shadow {
+      box-shadow: inset 1px 1px 2px 0px rgba(163, 160, 160, 0.3);
     }
 
     .child-item .title {
@@ -405,6 +422,7 @@ class LightSliderCard extends LitElement {
                   </div>
                 </div>
                 ${this._renderSlider(child.entity)}
+                <div class="card-inset-shadow"></div>
               </div>
             `;
           })}
